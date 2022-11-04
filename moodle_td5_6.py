@@ -33,7 +33,7 @@ def ex1(Ke_V, Ke_tr_min, i, Tp, R, vit_rota):
 
     # Q6 : r => Rendement du moteur
     q6 = q5 / (q4 * i)
-    print(f'Q6 : {q6} (Good quand Q4 sera good)')
+    print(f'Q6 : {q6} ')
 
 
 # TO DO !
@@ -65,7 +65,7 @@ if __name__ == '__main__':
 
 
     #ex1(Ke en V, Ke en tr/min , I en A, Tp (Q3) en Nm, R (Q4) en Kohm, vit_rota (Q4) en tr/min )
-    ex1(90, 1000, 7.9, 0.3, 1.2, 1430)
+    ex1(27, 1000, 5.2, 0.3, 1.2, 1430)
 
     #ATTENTION AUX UNITES QUE JE DEMANDE
     #la réponse est toujours donnée dans l'unité demandé ex q7 en ms
