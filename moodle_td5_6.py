@@ -24,15 +24,15 @@ def ex1(Ke_V, Ke_tr_min, i, Tp, R, vit_rota):
     print(f'Q3 : {q3} Nm')
 
     # Q4 : U => Tension d'alimentation
-    q4 = 1
-    print(f'Q4 : {q4} V (TO DOOOOOOOOOOOOO !)')
+    q4 = Kt * (vit_rota * ( 3.14 /30 )) + R * i
+    print(f'Q4 : {q4} V ')
 
     # Q5 : Pu => Puissance Utile
     q5 = q3 * (3.14 / 30) * vit_rota
     print(f'Q5 : {q5} W')
 
     # Q6 : r => Rendement du moteur
-    q6 = q5 / (q3 * i)
+    q6 = q5 / (q4 * i)
     print(f'Q6 : {q6} (Good quand Q4 sera good)')
 
 
@@ -64,8 +64,8 @@ if __name__ == '__main__':
     #Pour l'exo 1 mettre aussi R (valeur en question 4)
 
 
-    #ex1(Ke en V, Ke en tr/min , I en A, Tp (Q3) en Nm, R (Q4) en ohm, vit_rota (Q4) en tr/min )
-    ex1(90, 1000, 7.9, 0.3, 1200, 1430)
+    #ex1(Ke en V, Ke en tr/min , I en A, Tp (Q3) en Nm, R (Q4) en Kohm, vit_rota (Q4) en tr/min )
+    ex1(90, 1000, 7.9, 0.3, 1.2, 1430)
 
     #ATTENTION AUX UNITES QUE JE DEMANDE
     #la réponse est toujours donnée dans l'unité demandé ex q7 en ms
