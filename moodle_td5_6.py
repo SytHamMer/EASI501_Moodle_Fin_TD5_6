@@ -9,7 +9,7 @@
 #CA MARCHE PAS FORCEMENT REGARDEZ LE SUJET
 from math import exp
 from math import log
-from math import pi
+from math import pi, cos, sin, radians
 
 # A voir si on prend math.pi OU 3.14
 
@@ -36,24 +36,19 @@ def ex1(Ke_V, Ke_tr_min, i, Tp, R, vit_rota):
     print(f'Q6 : {q6} ')
 
 
-# TO DO !
-# def ex2(e,r1,r2,c,uc1,uc2):
-#
-#     q7= (r1*c)/1000
-#     print(f'Q7 : {q7} ms')
-#     q8=-q7*log((uc2-e)/(uc1-e))
-#     print(f'Q8 : {q8} ms')
-#     q9=(uc1-e)*exp(-q8/(2*q7))+e
-#     print(f'Q9 : {q9} V')
-#     q10=(r2*c)/1000
-#     print(f'Q10 : {q10} ms')
-#     q11=-q10*log(uc1/uc2)+q8
-#     print(f'Q11 : {q11} ms')
-#     t2 = -(q11-q8)/2
-#     q12=uc2*exp(t2/q10)
-#     print(f'Q12 : {q12} V')
+def ex2(i_Veff, i_Omega, i_angle, v_Veff, v_Omega, v_angle):
 
+    yEq_exp_val = i_Veff / v_Veff
+    yEq_exp_angle = i_angle - v_angle
 
+    yEq_carte_real_part = yEq_exp_val * cos( radians(yEq_exp_angle) )
+    yEq_carte_im_part = yEq_exp_val * sin( radians(yEq_exp_angle) )
+
+    q7 = 1 / (yEq_carte_im_part*-1 * i_Omega ) * 1000
+    print(f'Q7 : {q7} mH')
+
+    q8 = 1 / yEq_carte_real_part
+    print(f'Q8 : {q8} ohm')
 
 if __name__ == '__main__':
     #Mettre les valeurs dans les mêmes unités que proposer par exemple
@@ -65,10 +60,11 @@ if __name__ == '__main__':
 
 
     #ex1(Ke en V, Ke en tr/min , I en A, Tp (Q3) en Nm, R (Q4) en Kohm, vit_rota (Q4) en tr/min )
-    ex1(27, 1000, 5.2, 0.3, 1.2, 1430)
+    # ex1(27, 1000, 5.2, 0.3, 1.2, 1430)
 
     #ATTENTION AUX UNITES QUE JE DEMANDE
     #la réponse est toujours donnée dans l'unité demandé ex q7 en ms
-    #ex2(E en V,r1 en kohm,r2 en kohm ,c en nF,uc1 en V,uc2 en V)
-    # ex2(12, 1.2, 2.7, 665, 2.6, 9.0)
+    #ATTENTION : pour i_Omega ET v_Omega si 100*pi -> Mettre 100*pi
+    #ex2(i_Veff, i_Omega, i_angle , v_Veff, v_Omega,uc2 en V)
+    ex2(8.2, 100*pi, -35, 230, 100*pi, 0)
 
