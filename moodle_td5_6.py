@@ -10,6 +10,9 @@
 from math import exp
 from math import log
 from math import pi, cos, sin, radians
+from math import sqrt
+from math import atan
+from math import degrees
 
 # A voir si on prend math.pi OU 3.14
 
@@ -49,6 +52,23 @@ def ex2(i_Veff, i_Omega, i_angle, v_Veff, v_Omega, v_angle):
 
     q8 = 1 / yEq_carte_real_part
     print(f'Q8 : {q8} ohm')
+def ex3(Condo,Resist,v_Veff,v_Omega):
+    Zeq_carte_real_part = Resist
+    Zeq_carte_im_part = -1/((Condo*10**(-6))*v_Omega)
+
+    Zeq_exp_val_part = sqrt(Zeq_carte_real_part**2+Zeq_carte_im_part**2)
+    Zeq_exp_angle_part = degrees(atan(Zeq_carte_im_part/Zeq_carte_real_part))
+
+    i_exp_val_part = v_Veff/Zeq_exp_val_part
+    i_exp_angle_part = 0-Zeq_exp_angle_part
+    vr_Veff = Resist*i_exp_val_part
+
+    q9 = i_exp_val_part
+    print(f'Q9 : {q9} A')
+    q10 = vr_Veff
+    print(f'Q10 : {q10} V')
+    q11 = i_exp_angle_part
+    print(f'Q11 : {q11} °')
 
 if __name__ == '__main__':
     #Mettre les valeurs dans les mêmes unités que proposer par exemple
@@ -67,4 +87,10 @@ if __name__ == '__main__':
     #ATTENTION : pour i_Omega ET v_Omega si 100*pi -> Mettre 100*pi
     #ex2(i_Veff, i_Omega, i_angle , v_Veff, v_Omega,uc2 en V)
     ex2(8.2, 100*pi, -35, 230, 100*pi, 0)
+
+
+    #ATTENTION : pour i_Omega ET v_Omega si 100*pi -> Mettre 100*pi
+    #ex3(Condo,Resist,v_Veff,v_Omega)
+    ex3(122,33,230,100*pi)
+
 
